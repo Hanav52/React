@@ -33,5 +33,8 @@ const user1 = {
     }
 };
 
+
+
 console.log(user1.age, user1.name);
 console.log(user1.details.hobby, user1.details.major, user1.details.get_details(2));
+
