@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="POST" action="https://accounts.google.com/o/oauth2/token">
+		<input type="text" name="code"> <br />
+		<input type="text" name="client_id" value="1051877548530-38pugh8croib8pdk4vhsk37o8fnc7sba.apps.googleusercontent.com"> <br />
+		<input type="text" name="client_secret" value="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"> <br />
+		<input type="text" name="redirect_uri" value="http://ahastudy52.netlify.app/redirect.html"> <br />
+		<input type="text" name="grant_type" value="authorization_code"> <br />
+		<input type="submit">
+	</form>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script>
+		function getParameter(name){
+			var list = location.search.substring(1).split('&');
+			for(var i=0;i<list.length;i++){
+				var data = list[i].split('=');
+				if(data.length === 2){
+					if(data[0] === name){
+						return data[1];
+					}
+				}
+			}
+			return null;
+		}
+		$("input[name=code]").val(decodeURIComponent(getParameter('code')));
+	</script>
+</body>
+</html>
