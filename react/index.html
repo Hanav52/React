@@ -1,32 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <body>
    <div id="root"></div>
 </body>
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
 <script type="text/babel">
-    function Btn({text, changeValue}) { // or props로해도 괜찮다
+    function Btn({text, fontSize}) { // or props로해도 괜찮다
         return <button 
-        onClick={changeValue}
         style={{
             backgroundColor: "tomato",
             color: "white",
             borderRadius: 10,
             border: 0,
-            padding: "10px 20px"
+            padding: "10px 20px",
+            fontSize,
         }}>{text}</button>; // {}대괄호안에 props.text로 해도된다.
     }
-    const MemeBtn = React.memo(Btn);
+    Btn.propTypes = {
+        text: PropTypes.string.isRequired,
+        fontSize: PropTypes.number,
+    };
     function App() { 
-        const [value, setValue] = React.useState("save changes");
-        const changeValue = () => setValue("revert change");
         return (
             <div>
-                <MemeBtn text={value} changeValue={changeValue} />
-                <MemeBtn text="continue"/>
-            </div>
+                <Btn text="save changes" fontSize={18}/>
+                <Btn text={"countinue"}/>
+                </div>
         );
     }
     const root = document.getElementById("root");
