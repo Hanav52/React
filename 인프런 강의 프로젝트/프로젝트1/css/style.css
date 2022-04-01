@@ -38,7 +38,7 @@ a:hover {
   height: 100%; /* align-items 등으로 수직 가운데 정렬을 위해, 알맞은 height 설정이 필요함 */
   margin: 0 auto; /* 가운데 정렬: 동일 요소에 width 가 설정되어 있을 때에만 적용 */
   padding: 0rem 2rem; /* 좌우 padding 을 살짝 주어서, 좌우에 딱 붙지 않도록 함 */
-  overflow: hidden;
+  overflow: hidden; /* 넘치는 영역에 대해서는 표시안되도록 작성해야 함 */
 }
 
 header {
@@ -234,7 +234,7 @@ section {
 }
 
 .class-card {
-  max-width: 240px;
+  width: 240px;
   /* box-shadow: 블럭에 그림자를 적용하는 CSS 기능
      https://developer.mozilla.org/ko/docs/Web/CSS/box-shadow 
      offset-x | offset-y | blur-radius | spread-radius | color */
@@ -242,6 +242,7 @@ section {
   border-radius: 8px;
   margin: 0 10px;
   transition: 0.4s;
+  /* IE11 에서는 flex 설정시, 디폴트로 flex 아이템들에 고정 너비를 무시 */
   flex-shrink: 0;
 }
 
@@ -251,7 +252,9 @@ section {
 }
 
 .class-image {
+  /* 사이즈가 큰 이미지를 작은 블럭 내에 넣을 때 호환성을 위해 max-width/max-height 를 사용해야 함 */
   max-width: 240px;
+
   /* border-radius: 블럭 모서리를 둥글게 하는 CSS 기능
      top-left | top-right | bottom-right | bottom-left */
   border-radius: 8px 8px 0 0;
@@ -320,17 +323,33 @@ footer {
   font-weight: bold;
   color: #545e6f;
   margin: 0.3rem 0.5rem;
-
 }
 
 .footer-contact {
   color: #545e6f;
-  margin: 0rem 0.5rem;
+  margin: 0 0.5rem;
 }
 
 .footer-copyright {
   color: #545e6f;
   margin: 1rem 0.5rem;
+}
+
+#backtotop {
+  background-color: rgb(47, 48, 89);
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  
+  border-radius: 20px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition-property: background-color, opacity, visibility;
+  transition-duration: 0.3s, 0.5s, 0.5s, 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999;
 }
 
 @media only screen and (min-width: 1200px) {

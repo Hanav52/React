@@ -7,67 +7,29 @@
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-    const root = document.getElementById("root");
-    function MinutesToHours() {
-        const [amount, setAmount] = React.useState(0);
-        const [flipped, setflipped] = React.useState(false);
-        const onChange = (event) => {
-            setAmount(event.target.value);
-        };
-        const reset = () => setAmount(0);
-        const onFlip = () => {
-            reset();
-            setflipped((current) => !current);
-        }
-        return(
-        <div>
-        <div>
-            <label for="minutes">minutes</label>
-            <input value={flipped ? amount * 60 : amount}
-                   type="number" 
-                   id="minutes" 
-                   placeholder="minutes"
-                   onChange={onChange}
-                   disabled={flipped}/>
-            
-        </div>
-        <div>
-            <label for="hour">housr</label>
-            <input value={flipped ? amount : Math.round(amount/60)}
-                   type="number" 
-                   id="hour" 
-                   placeholder="hours"
-                   disabled={!flipped}
-                   onChange={onChange}/>
-        </div>
-        <button onClick={reset}>reset</button>
-        <button onClick={onFlip}>{flipped ? "turn back" : "flipped"}</button>
-        </div>
-        );
+    function Btn({text, changeValue}) { // or props로해도 괜찮다
+        return <button 
+        onClick={changeValue}
+        style={{
+            backgroundColor: "tomato",
+            color: "white",
+            borderRadius: 10,
+            border: 0,
+            padding: "10px 20px"
+        }}>{text}</button>; // {}대괄호안에 props.text로 해도된다.
     }
-    function KmToMiles() {
-        return <h3>KM 2 M</h3>;
-    }
+    const MemeBtn = React.memo(Btn);
     function App() { 
-        const [index, setIndex] = React.useState("xx");
-        const onSelect = (event) => {
-            setIndex(event.target.value);
-        }
+        const [value, setValue] = React.useState("save changes");
+        const changeValue = () => setValue("revert change");
         return (
             <div>
-                <h1>super conver</h1>
-                 <select value={index} onChange={onSelect}>
-                    <option value="-1">고르세요</option>
-                     <option value="0">Minutes & Hours</option>
-                     <option value="1">Km & Hours</option>
-                 </select>
-                 <hr/>
-                 {index === "xx" ? "please select units" : null}
-                 {index === "0" ? <MinutesToHours/> : null}
-                 {index === "1" ? <KmToMiles/> : null}
+                <MemeBtn text={value} changeValue={changeValue} />
+                <MemeBtn text="continue"/>
             </div>
         );
     }
+    const root = document.getElementById("root");
     ReactDOM.render(<App />, root);
 </script>
 </html>
