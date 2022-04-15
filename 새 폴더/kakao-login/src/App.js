@@ -1,5 +1,6 @@
 import "./App.css";
 import Auth from "./Auth";
+import Profile from "./Profile";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -9,16 +10,21 @@ function App() {
 
   return (
     <Router>
-    <div className="App">
-      <Switch>
-        <Route exact path="/">
-          <h1><a href={KAKAO_AUTH_URL}>Kakao Login</a></h1>
-        </Route>
-        <Route path="/oauth/kakao/callback">
-          <Auth />
-        </Route>
-      </Switch>
-    </div>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            <h1>
+              <a href={KAKAO_AUTH_URL}>Kakao Login</a>
+            </h1>
+          </Route>
+          <Route path="/oauth/kakao/callback">
+            <Auth />
+          </Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+        </Switch>
+      </div>
     </Router>
   );
 }
