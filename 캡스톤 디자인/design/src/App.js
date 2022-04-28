@@ -25,5 +25,8 @@ function App() {
 단순화 하여 useEffect(() => {
 console.log("CALL THE API")
 },[]); 써도 됨
-state를 변경할때는 함수가 다시 시작된다.*/
+state를 변경할때는 함수가 다시 시작된다.
+
+react.js는 변화가 일어날 떄만 refresh를 한다.
+하지만 component를 한번만 하는걸 원할떄가 있는데 그때 useEffect를 사용한다.*/
 export default App;
