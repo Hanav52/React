@@ -27,3 +27,29 @@ function moveBackToTop() {
 
 window.addEventListener('scroll', checkScroll);
 backToTop.addEventListener('click', moveBackToTop);
+
+//
+const transformPrev = () => {
+    
+}
+const slidePrevList = document.getElementsByClassName('slide-prev');
+
+for (let i = 0; i< slidePrevList.length; i++) {
+    // ul 태그 선택
+    let classList = slidePrevList[i].parentElement.parentElement.nextElementSibling;
+    let ilList = classList.getElementsByTagName('li');
+
+    // 카드가 ul 태그 너비보다 넘치면, 왼쪽(prev) 버튼을 활성화하고, 오른쪽(next)는 현재 맨 첫카드 위치이므로 비활성화
+    if(classList.clientWidth < (ilList.length * 260)) {
+        slidePrevList[i].classList.add('slide-prev-hover');
+        slidePrevList[i].addEventListener('click', transformPrev);
+    } else {
+        /* 태그 삭제시, 부모 요소에서 removechild를 통해 삭제해야한다.
+            따라서 1. 먼저 부모 요소를 찾아서,
+                   2. 부모 요소의 자식 요소로 있는 prev와 next요소를 삭제한다.
+                   */
+        const arrowContainer = slidePrevList[i].parentElement;
+        arrowContainer.removeChild(slidePrevList[i].nextElementSibling);
+        arrowContainer.removeChild(slidePrevList[i]);
+    }
+}
