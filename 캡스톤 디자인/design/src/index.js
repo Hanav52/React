@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import H11 from './App copy 5';
+import AppMovie from './route';
 
 ReactDOM.render(
   <React.StrictMode>
-    <H11 />
+    <AppMovie />
   </React.StrictMode>,
   document.getElementById('root')
 );
