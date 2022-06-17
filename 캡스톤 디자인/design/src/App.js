@@ -1,32 +1,22 @@
-import {useState, useEffect} from "react";
-
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Detail from "./routes/Detail";
+import Home from "./routes/Home";
 function App() {
-  const [counter, setValue] = useState(0);
-  const onClick = () => setValue((prev) => prev + 1);
-  console.log("i run all the time");
-  useEffect ( () => {
-    console.log("call the api")
-  }, []);
   return (
-    <div>
-      <h1>{counter}</h1>
-      <button onClick={onClick}>click me </button>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/abot-us">
+          <h1>Hello</h1>
+        </Route>
+        <Route path="/movie/:id">
+          <Detail />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
-/*useEffect
-- 두 개의 argument를 가지는 함수
-- 첫 번째 argument는 우리가 딱 한번만 실행하고 싶은 코드
-- 두 번째는 [] 배열을 넣어줌
--> useEffect가 컴포넌트의 첫 번째 렌더 시점에 iRunOnlyOnce 함수 호출
-그리고 상태를 변화시키면 iRunOnlyOnce는 호출되지 않음
-즉, 한번만 렌더링 됨
-단순화 하여 useEffect(() => {
-console.log("CALL THE API")
-},[]); 써도 됨
-state를 변경할때는 함수가 다시 시작된다.
 
-react.js는 변화가 일어날 떄만 refresh를 한다.
-하지만 component를 한번만 하는걸 원할떄가 있는데 그때 useEffect를 사용한다.*/
 export default App;
