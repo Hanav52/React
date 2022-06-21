@@ -143,7 +143,7 @@ section {
   padding: 0.5rem 1rem;
   margin: 0 1rem;
   /* box-shadow: 블럭에 그림자를 적용하는 CSS 기능
-     https://developer.mozilla.org/ko/docs/Web/CSS/box-shadow 
+     https://developer.mozilla.org/ko/docs/Web/CSS/box-shadow
      offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 10px 10px 10px -5px rgba(25, 42, 70, 0.2);
   transition: 0.4s;
@@ -236,7 +236,7 @@ section {
 .class-card {
   width: 240px;
   /* box-shadow: 블럭에 그림자를 적용하는 CSS 기능
-     https://developer.mozilla.org/ko/docs/Web/CSS/box-shadow 
+     https://developer.mozilla.org/ko/docs/Web/CSS/box-shadow
      offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 10px 10px 10px -5px rgba(25, 42, 70, 0.2);
   border-radius: 8px;
@@ -340,7 +340,7 @@ footer {
   width: 40px;
   height: 40px;
   text-align: center;
-  
+
   border-radius: 20px;
   position: fixed;
   bottom: 30px;
@@ -354,7 +354,7 @@ footer {
 
 @media only screen and (min-width: 1200px) {
   .inner {
-    max-width: 1200px;
+    max-width: 1500px;
   }
 }
 
